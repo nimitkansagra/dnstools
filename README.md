@@ -3,7 +3,7 @@
 A server that serves a webpage, its resources, and some data
 
 
-## Your Project
+## Project by NimLo
 
 On the front-end,
 
