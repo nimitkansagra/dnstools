@@ -145,30 +145,66 @@
                                             body: JSON.stringify({ url: urlinput })
                                         });
                                         let res = await response.json();
-                                        alert(JSON.stringify(res));
+                                        //console.log(JSON.stringify(res));
+                                        console.log(res);
 
                                         //var parser = new DOMParser();
                                         //var htmlDoc = parser.parseFromString(res, 'text/html');
 
                                         //document.getElementById('performanceResult').src = "data:text/html;charset=utf-8," + escape(res);
-                                        document.getElementById('performanceResult').src = "data:text/html;charset=utf-8," + escape("<h1>Tested</h1>");
+                                        //.getElementById('performanceResult').src = "data:text/html;charset=utf-8," + escape("<h1>Tested</h1>");
+                                        let htmlCode =
+                                      '<p class="small text-uppercase text-muted font-weight-semi-bold line-height-headings mb-2">Performance Report</p>';
+                                        let keyArr = Object.keys(res.report.audits);
+                                        keyArr.forEach(element => {
+                                            if(res.report.audits.hasOwnProperty(element)){
+                                                if(typeof(res.report.audits[element])=="object"){
+                                                    //console.log(res.certificate[element]+" -> "+typeof(res.certificate[element]));
+                                                    //console.log(Object.keys(res.certificate[element]));
+                                                    let x = Object.keys(res.report.audits[element]);
+                                                    let y = Object.values(res.report.audits[element]);
 
-                                        //$('#performanceResult').html('<pre>' + JSON.stringify(res.headers, undefined, 4) + '</pre>');
-                                        $('#loading').addClass('d-none');
-                                        $('#perfBtn').prop('disabled', false);
-                                    }
+                                                    htmlCode = htmlCode + `<p class="badge badge-status badge-status--2xx text-uppercase font-weight-semi-bold line-height-headings mb-2 mt-2" style="font-size: 100%;">${element}</p>`;
 
+                                                    x.forEach(innerKeys => {
+                                                        htmlCode = htmlCode +
+                                                        '<dl class="row mb-0">'+
+                                                            `<dt class="col-4" style="text-transform: capitalize;">${innerKeys}</dt>`+
+                                                            `<dd class="col-8 text-monospace">${res.report.audits[element][innerKeys]}</dd>`+
+                                                        '</dl>';
+                                                    });
+                                                    /*htmlCode = htmlCode +
+                                                    '<dl class="row mb-0">'+
+                                                        `<dt class="col-4" style="text-transform: capitalize;">${element}</dt>`+
+                                                        `<dd class="col-8 text-monospace">${JSON.stringify(res.certificate[element])}</dd>`+
+                                                    '</dl>';*/
+                                                }
+                                                else{
+                                                    htmlCode = htmlCode +
+                                                    '<dl class="row mb-0">'+
+                                                        `<dt class="col-4" style="text-transform: capitalize;">${element}</dt>`+
+                                                        `<dd class="col-8 text-monospace">${res.report.audits[element]}</dd>`+
+                                                    '</dl>';
+                                                }
+                                            }
+                                            //$('#performanceResult').html('<pre>' + JSON.stringify(res.headers, undefined, 4) + '</pre>');
+                                            $('#performanceResult').html(htmlCode);
+                                            $('#loading').addClass('d-none');
+                                            $('#perfBtn').prop('disabled', false);
+                                        }); 
+                                    } 
                                     getResult1();
+                                    
                                 });
                             });
                         </script>
 
-                        <!--<div  class="mt-4">
-                    <div class="bg-light medium text-break-all text-monospace rounded p-3" id="curlResult">
+                        <div  class="mt-4">
+                            <div class="bg-light medium text-break-all text-monospace rounded p-3" id="performanceResult">
 
-                    </div>-->
-                        <!--</div>-->
-                        <iframe id="performanceResult" src="javascript:void(0);" frameborder="0"></iframe>
+                            </div>
+                        </div>
+                        <!--<iframe id="performanceResult" src="javascript:void(0);" frameborder="0"></iframe>-->
 
 
                         <h2 id="http-header-checker-faq" class="h4">HTTP Header Checker FAQ</h2>

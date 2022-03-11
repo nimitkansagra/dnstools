@@ -220,10 +220,10 @@ app.get("/A/8/:url", (req, res) => {
   });
 });
 
-// Dalfsen, Netherlands - Plinq Bv - 193.239.186.71
+// Roosendaal, Netherlands - Plinq Bv - 185.107.80.84
 app.get("/A/9/:url", (req, res) => {
   let url = req.params.url;
-  dns.setServers(["193.239.186.71"]);
+  dns.setServers(["185.107.80.84"]);
   /// RECORD RESOLVATION
   dns.resolve(url, "A", (err, result) => {
     if (err) {
@@ -910,10 +910,10 @@ app.get("/NS/8/:url", (req, res) => {
   });
 });
 
-// Dalfsen, Netherlands - Plinq Bv - 193.239.186.71
+// Roosendaal, Netherlands - Plinq Bv - 185.107.80.84
 app.get("/NS/9/:url", (req, res) => {
   let url = req.params.url;
-  dns.setServers(["193.239.186.71"]);
+  dns.setServers(["185.107.80.84"]);
   /// RECORD RESOLVATION
   dns.resolve(url, "NS", (err, result) => {
     if (err) {
@@ -1597,10 +1597,10 @@ app.get("/MX/8/:url", (req, res) => {
   });
 });
 
-// Dalfsen, Netherlands - Plinq Bv - 193.239.186.71
+// Roosendaal, Netherlands - Plinq Bv - 185.107.80.84
 app.get("/MX/9/:url", (req, res) => {
   let url = req.params.url;
-  dns.setServers(["193.239.186.71"]);
+  dns.setServers(["185.107.80.84"]);
   /// RECORD RESOLVATION
   dns.resolve(url, "MX", (err, result) => {
     if (err) {
@@ -2285,10 +2285,10 @@ app.get("/SOA/8/:url", (req, res) => {
   });
 });
 
-// Dalfsen, Netherlands - Plinq Bv - 193.239.186.71
+// Roosendaal, Netherlands - Plinq Bv - 185.107.80.84
 app.get("/SOA/9/:url", (req, res) => {
   let url = req.params.url;
-  dns.setServers(["193.239.186.71"]);
+  dns.setServers(["185.107.80.84"]);
   /// RECORD RESOLVATION
   dns.resolve(url, "SOA", (err, result) => {
     if (err) {
@@ -2972,10 +2972,10 @@ app.get("/TXT/8/:url", (req, res) => {
   });
 });
 
-// Dalfsen, Netherlands - Plinq Bv - 193.239.186.71
+// Roosendaal, Netherlands - Plinq Bv - 185.107.80.84
 app.get("/TXT/9/:url", (req, res) => {
   let url = req.params.url;
-  dns.setServers(["193.239.186.71"]);
+  dns.setServers(["185.107.80.84"]);
   /// RECORD RESOLVATION
   dns.resolve(url, "TXT", (err, result) => {
     if (err) {
